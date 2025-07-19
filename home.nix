@@ -18,6 +18,7 @@
     vim
     wget
     rofi-wayland
+    waybar
     hack-font
     discord
     vivaldi
@@ -87,6 +88,10 @@
     enable = true;
     settings = {
 
+      exec-once = [
+        "waybar"
+      ];
+
       monitor = [
         "DP-1,2560x1440@165,1440x1120,1"
         "HDMI-A-1,2560x1440@144,0x0,1,transform,3"
@@ -114,6 +119,11 @@
     };
   };
 
+  xdg.portal = {
+    enable = true;
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+  };
+
   fonts.fontconfig.enable = true;
   
   programs.neovim = {
@@ -128,6 +138,25 @@
     settings = {
       font_family = "Hack";
     };
+  };
+
+  programs.waybar = {
+    enable = true;
+
+    settings = {
+      mainBar = {
+        layer = "top";
+	position = "top";
+	height = 30;
+	spacing = 4;
+
+        modules-left = [ "hyprland/workspaces" "hyprland/mode" ];
+	modules-center = [ "hyprland/window" ];
+	modules-right = [ "battery" "clock" ];
+      };
+    };
+
+    style = builtins.readFile ./waybar/style.css;
   };
 
 }
