@@ -4,6 +4,8 @@
 
   imports = [
     ./hyprland
+    ./kitty.nix
+    ./neovim
     ./steam.nix
     ./waybar
   ];
@@ -20,13 +22,10 @@
   };
 
   home.packages = with pkgs; [
-    kitty
     git
     vim
     wget
     rofi-wayland
-    waybar
-    hack-font
     discord
     vivaldi
     firefox
@@ -97,19 +96,5 @@
   };
 
   fonts.fontconfig.enable = true;
-  
-  programs.neovim = {
-    enable = true;
-    defaultEditor = true;
-    viAlias = true;
-    vimAlias = true;
-  };
-
-  programs.kitty = {
-    enable = true;
-    settings = {
-      font_family = "Hack";
-    };
-  };
 
 }
