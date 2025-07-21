@@ -72,7 +72,7 @@
 
     oh-my-zsh = {
       enable = true;
-      custom = "${config.xdg.configHome}/home-manager/zsh/themes";
+      custom = "/etc/nixos/home/zsh/themes";
       theme = "blinks-mag";
       plugins = [
         "git"
