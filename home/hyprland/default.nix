@@ -1,0 +1,62 @@
+{ config, pkgs, ... }:
+
+{
+  wayland.windowManager.hyprland = {
+    enable = true;
+    settings = {
+
+      exec-once = [
+        "waybar"
+      ];
+
+      monitor = [
+        "DP-1,2560x1440@165,1440x440,1"
+        "HDMI-A-1,2560x1440@144,0x0,1,transform,3"
+      ];
+
+      misc = {
+        disable_hyprland_logo = true;
+	disable_splash_rendering = true;
+      };
+
+      # Key bindings
+      "$mod" =  "SUPER";
+
+      bind = [
+        # Application shortcuts
+        "$mod, Return, exec, kitty"
+	"$mod, Q, killactive"
+        "$mod, D, exec, rofi -show drun"
+
+        # Move focus with mainMod + hjkl
+        "$mod, m, movefocus, l"
+        "$mod, i, movefocus, r"
+        "$mod, e, movefocus, u"
+        "$mod, n, movefocus, d"
+
+        # Move window with mainMod + hjkl
+        "$mod SHIFT, m, movewindow, l"
+        "$mod SHIFT, i , movewindow, r"
+        "$mod SHIFT, e, movewindow, u"
+        "$mod SHIFT, n, movewindow, d"
+
+        # Switch workspaces with mainMod + [0-9]
+        "$mod, 1, workspace, 1"
+        "$mod, 2, workspace, 2"
+        "$mod, 3, workspace, 3"
+        "$mod, 4, workspace, 4"
+        "$mod, 5, workspace, 5"
+        "$mod, 6, workspace, 6"
+        "$mod, 7, workspace, 7"
+        "$mod, 8, workspace, 8"
+        "$mod, 9, workspace, 9"
+        "$mod, 0, workspace, 10"
+      ];
+
+      bindm = [
+        "$mod, mouse:272, movewindow"
+        "$mod, mouse:273, resizewindow"
+      ];
+    };
+  };
+}
