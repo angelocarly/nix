@@ -11,9 +11,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # Colors
+    nix-colors.url = "github:misterio77/nix-colors";
   };
 
-  outputs = inputs@{ nixpkgs, home-manager, ... }: {
+  outputs = inputs@{ nixpkgs, home-manager, nix-colors, ... }: {
     nixosConfigurations = {
       nixos = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
@@ -26,6 +28,7 @@
             home-manager.useGlobalPkgs = true;
 	    home-manager.useUserPackages = true;
 	    home-manager.users.lauda = import ./home/home.nix;
+	    home-manager.extraSpecialArgs = { inherit nix-colors; };
 	  }
         ];
       };

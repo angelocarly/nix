@@ -1,3 +1,1 @@
 # Nix
-
-My nix configuration

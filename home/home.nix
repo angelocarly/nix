@@ -1,14 +1,17 @@
-{ config, pkgs, ... }:
+{ config, pkgs, nix-colors, ... }:
 
 {
 
   imports = [
+    nix-colors.homeManagerModules.default
     ./hyprland
     ./kitty.nix
     ./neovim
     ./steam.nix
     ./waybar
   ];
+
+  colorScheme = nix-colors.lib.schemeFromYAML "belge" (builtins.readFile ./colorschemes/belge.yaml);
 
   home.username = "lauda";
   home.homeDirectory = "/home/lauda";
@@ -24,6 +27,8 @@
   home.packages = with pkgs; [
     git
     vim
+    gotop
+    ranger
     wget
     rofi-wayland
     discord
