@@ -11,7 +11,7 @@
     ./waybar
   ];
 
-  colorScheme = nix-colors.lib.schemeFromYAML "belge" (builtins.readFile ./colorschemes/belge.yaml);
+  colorScheme = nix-colors.lib.schemeFromYAML "belge" (builtins.readFile ./colorschemes/store/1039.yaml);
 
   home.username = "lauda";
   home.homeDirectory = "/home/lauda";
@@ -22,19 +22,35 @@
 
   home.sessionVariables = {
     SHELL = "${pkgs.zsh}/bin/zsh";
+    BROWSER = "vivaldi";
+  };
+
+  xdg.mimeApps = {
+    enable = true;
+    defaultApplications = {
+      "default-web-browser" = "vivaldi-stable.desktop";
+      "text/html" = "vivaldi-stable.desktop";
+      "x-scheme-handler/http" = "vivaldi-stable.desktop";
+      "x-scheme-handler/https" = "vivaldi-stable.desktop";
+    };
   };
 
   home.packages = with pkgs; [
+    nix-output-monitor
     git
     vim
+    xdg-utils
     gotop
     ranger
     wget
+    neofetch
     rofi-wayland
     discord
     vivaldi
     firefox
     spotify
+    jetbrains.rust-rover
+    python3
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage

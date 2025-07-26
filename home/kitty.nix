@@ -11,6 +11,9 @@
     settings = {
       font_family = "Hack";
 
+      foreground = "#${config.colorScheme.palette.base05}";
+      background = "#${config.colorScheme.palette.base00}";
+
       color0 = "#${config.colorScheme.palette.base00}";
       color1 = "#${config.colorScheme.palette.base01}";
       color2 = "#${config.colorScheme.palette.base02}";
