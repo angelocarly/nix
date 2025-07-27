@@ -4,6 +4,7 @@
 
   imports = [
     stylix.homeModules.stylix
+    ./direnv.nix
     ./hyprland
     ./kitty.nix
     ./neovim
