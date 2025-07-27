@@ -11,24 +11,23 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Colors
-    nix-colors.url = "github:misterio77/nix-colors";
+    # Stylix
+    stylix.url = "github:nix-community/stylix/release-25.05";
   };
 
-  outputs = inputs@{ nixpkgs, home-manager, nix-colors, ... }: {
+  outputs = { nixpkgs, home-manager, stylix, ... }: {
     nixosConfigurations = {
       nixos = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
           ./nixos/configuration.nix
 	  ./driver
-
 	  home-manager.nixosModules.home-manager
 	  {
             home-manager.useGlobalPkgs = true;
 	    home-manager.useUserPackages = true;
 	    home-manager.users.lauda = import ./home/home.nix;
-	    home-manager.extraSpecialArgs = { inherit nix-colors; };
+	    home-manager.extraSpecialArgs = { inherit stylix; };
 	  }
         ];
       };

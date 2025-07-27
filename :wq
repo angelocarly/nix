@@ -3,7 +3,7 @@
 {
 
   imports = [
-    stylix.homeModules.stylix
+    stylix.homeManagerModules.stylix
     ./hyprland
     ./kitty.nix
     ./neovim
@@ -11,10 +11,6 @@
     ./waybar
   ];
 
-  # Disable dconf to prevent the service error
-  dconf.enable = false;
-
-  # Color scheme
   stylix.enable = true;
   stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
   stylix.targets.kitty.enable = true;
@@ -23,6 +19,8 @@
   home.homeDirectory = "/home/lauda";
 
   home.stateVersion = "25.05";
+
+  nixpkgs.config.allowUnfree = true;
 
   home.sessionVariables = {
     SHELL = "${pkgs.zsh}/bin/zsh";
