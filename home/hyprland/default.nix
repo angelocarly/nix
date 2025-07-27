@@ -19,10 +19,6 @@
 	disable_splash_rendering = true;
       };
 
-      cursor = {
-        enable_hyprcursor = false;
-      };
-
       workspace = [
         "1, monitor:HDMI-A-1"
         "2, monitor:DP-1"

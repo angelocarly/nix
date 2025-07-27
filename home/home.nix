@@ -15,9 +15,20 @@
   dconf.enable = false;
 
   # Color scheme
-  stylix.enable = true;
-  stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
-  stylix.targets.kitty.enable = true;
+  stylix = {
+    enable = true;
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
+    targets = {
+      kitty.enable = true;
+      neovim.enable = true;
+    };
+
+    cursor = {
+      package = pkgs.bibata-cursors;
+      name = "Bibata-Modern-Classic";
+      size = 24;
+    };
+  };
 
   home.username = "lauda";
   home.homeDirectory = "/home/lauda";
